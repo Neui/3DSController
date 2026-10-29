@@ -16,6 +16,11 @@ struct settings defaultSettings = {
 	cStick: joystick2,
 	touch: mouse,
 	mouseSpeed: 4,
+	mouseTap: 1,
+	mouseX: 0,
+	mouseY: 0,
+	mouseW: 0,
+	mouseH: 0,
 	A: { 1, {'A'} },
 	B: { 1, {'B'} },
 	X: { 1, {'X'} },
@@ -148,6 +153,17 @@ bool readSettings(void) {
 	
 	if(getSetting("Mouse Speed: ", buffer, setting)) {
 		sscanf(setting, "%d", &settings.mouseSpeed);
+	}
+
+	if(getSetting("Mouse Tap: ", buffer, setting)) {
+		sscanf(setting, "%d", &settings.mouseTap);
+	}
+
+	if(getSetting("Mouse Rect: ", buffer, setting)) {
+		sscanf(setting, "%d", &settings.mouseX);
+		sscanf(setting, "%d", &settings.mouseY);
+		sscanf(setting, "%d", &settings.mouseW);
+		sscanf(setting, "%d", &settings.mouseH);
 	}
 	
 	if(getSetting("A: ", buffer, setting)) settings.A = getButton(setting);

@@ -14,7 +14,7 @@
 #include "keyboard.h"
 
 int WINAPI WinMain(HINSTANCE hInst, HINSTANCE hPrevInst, LPSTR lpCmd, int nShow) {
-	printf("3DS Controller Server %.1f\n", VERSION);
+	printf("3DS Controller Server %.1f (mouse click mod)\n", VERSION);
 	
 	DWORD screenWidth = GetSystemMetrics(SM_CXSCREEN);
 	DWORD screenHeight = GetSystemMetrics(SM_CYSCREEN);
@@ -57,6 +57,11 @@ int WINAPI WinMain(HINSTANCE hInst, HINSTANCE hPrevInst, LPSTR lpCmd, int nShow)
 	
 	if(!readSettings()) {
 		printf("Couldn't read settings file, using default key bindings.\n");
+	}
+
+	if(settings.mouseW != 0 && settings.mouseH != 0) {
+		widthMultiplier = settings.mouseW / 320.0;
+		heightMultiplier = settings.mouseH / 240.0;
 	}
 	
 	initNetwork();
@@ -160,7 +165,11 @@ int WINAPI WinMain(HINSTANCE hInst, HINSTANCE hPrevInst, LPSTR lpCmd, int nShow)
 							SetCursorPos(p.x + (currentTouch.x - lastTouch.x) * settings.mouseSpeed, p.y + (currentTouch.y - lastTouch.y) * settings.mouseSpeed);
 						}
 						else {
-							SetCursorPos((int)((double)currentTouch.x * widthMultiplier), (int)((double)currentTouch.y * heightMultiplier));
+							SetCursorPos(settings.mouseX + (int)(currentTouch.x * widthMultiplier),
+									settings.mouseY + (int)(currentTouch.y * heightMultiplier));
+						}
+						if (settings.mouseTap) {
+							handleKey(KEY_TOUCH, settings.Tap);
 						}
 					}
 					else if(settings.touch == joystick1) {
@@ -171,9 +180,6 @@ int WINAPI WinMain(HINSTANCE hInst, HINSTANCE hPrevInst, LPSTR lpCmd, int nShow)
 					else if(settings.touch == joystick2) {
 						joyRX = (currentTouch.x) * 128;
 						joyRY = (currentTouch.y) * 128;
-					}
-					else {
-						handleKey(KEY_TOUCH, settings.Tap);
 					}
 				}
 				

@@ -17,6 +17,8 @@ struct settings {
 	enum analogue cStick;
 	enum analogue touch;
 	int mouseSpeed;
+	int mouseTap;
+	int mouseX, mouseY, mouseW, mouseH;
 	struct keyMapping A, B, X, Y, L, R, ZL, ZR, Left, Right, Up, Down, Start, Select, Tap;
 };
 

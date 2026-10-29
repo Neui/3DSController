@@ -105,3 +105,4 @@ extern struct touch currentTouch;
 inline unsigned int mapVirtualKey(unsigned int key);
 void simulateKeyNewpress(unsigned int key);
 void simulateKeyRelease(unsigned int key);
+
