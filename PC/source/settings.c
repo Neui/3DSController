@@ -159,10 +159,16 @@ bool readSettings(void) {
 		sscanf(setting, "%d", &settings.mouseTap);
 	}
 
-	if(getSetting("Mouse Rect: ", buffer, setting)) {
+	if(getSetting("Mouse X: ", buffer, setting)) {
 		sscanf(setting, "%d", &settings.mouseX);
+	}
+	if(getSetting("Mouse Y: ", buffer, setting)) {
 		sscanf(setting, "%d", &settings.mouseY);
+	}
+	if(getSetting("Mouse W: ", buffer, setting)) {
 		sscanf(setting, "%d", &settings.mouseW);
+	}
+	if(getSetting("Mouse H: ", buffer, setting)) {
 		sscanf(setting, "%d", &settings.mouseH);
 	}
 	
