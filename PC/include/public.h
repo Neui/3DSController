@@ -41,7 +41,7 @@ Revision History:
 #include "PPJIoctl.h"
 #endif
 
-#include <INITGUID.H>	// Definitions for controlling GUID initialization
+#include <initguid.h>	// Definitions for controlling GUID initialization
 
 //
 // Usage example:
