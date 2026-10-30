@@ -193,6 +193,12 @@ int WINAPI WinMain(HINSTANCE hInst, HINSTANCE hPrevInst, LPSTR lpCmd, int nShow)
 						joyRY = (currentTouch.y) * 128;
 					}
 				}
+				else if(settings.touch == mouse) {
+					// Handle situation to un-press the cursor
+					if (settings.mouseTap) {
+						handleKey(KEY_TOUCH, settings.Tap);
+					}
+				}
 				
 				if(settings.circlePad == mouse) {
 					if(abs(circlePad.x) < settings.mouseSpeed * 3) circlePad.x = 0;
