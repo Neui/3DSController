@@ -53,7 +53,6 @@ static bool getSetting(char *name, char *src, char *dest) {
 		
 		strncpy(dest, start, size);
 		dest[size] = '\0';
-		printf("Setting \"%s\": \"%s\"\n", name, dest);
 		
 		return true;
 	}
