@@ -75,6 +75,17 @@ int WINAPI WinMain(HINSTANCE hInst, HINSTANCE hPrevInst, LPSTR lpCmd, int nShow)
 	
 	printf("Your local IP(s):\n");
 	printIPs();
+
+	printf("Final config:\n");
+	printf("Throttle: %d\n", settings.throttle);
+	printf("Circle Pad: %d\n", settings.cStick);
+	printf("C Stick: %d\n", settings.cStick);
+	printf("Touch: %d\n", settings.cStick);
+	printf("Mouse Speed: %d\n", settings.mouseSpeed);
+	printf("Mouse Tap: %d\n", settings.mouseTap);
+	printf("Mouse X/Y/W/H: %d/%d/%d/%d  (W/H multi=%f/%f)\n", settings.mouseX,
+			settings.mouseY, settings.mouseW, settings.mouseH,
+			widthMultiplier, heightMultiplier);
 	
 	printf("\n");
 	
