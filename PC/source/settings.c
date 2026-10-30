@@ -44,12 +44,16 @@ static bool getSetting(char *name, char *src, char *dest) {
 	if(start) {
 		start += strlen(name);
 		
-		char *end = start + strlen(start);
-		if(strstr(start, "\n") - 1 < end) end = strstr(start, "\n") - 1;
+		char *end = strstr(start, "\n");
+		if (!end)
+			end = start + strlen(start);
+		if (start != end && end[-1] == '\r')
+			end--;
 		size_t size = (size_t)end - (size_t)start;
 		
 		strncpy(dest, start, size);
 		dest[size] = '\0';
+		printf("Setting \"%s\": \"%s\"\n", name, dest);
 		
 		return true;
 	}
@@ -115,13 +119,14 @@ bool readSettings(void) {
 	len = ftell(f);
 	rewind(f);
 	
-	buffer = malloc(len);
+	buffer = malloc(len + 1);
 	if(!buffer) {
 		fclose(f);
 		return false;
 	}
 	
 	fread(buffer, 1, len, f);
+	buffer[len] = '\0';
 	
 	char setting[64] = { '\0' };
 	
