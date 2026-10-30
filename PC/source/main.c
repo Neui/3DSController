@@ -78,9 +78,9 @@ int WINAPI WinMain(HINSTANCE hInst, HINSTANCE hPrevInst, LPSTR lpCmd, int nShow)
 
 	printf("Final config:\n");
 	printf("Throttle: %d\n", settings.throttle);
-	printf("Circle Pad: %d\n", settings.cStick);
+	printf("Circle Pad: %d\n", settings.circlePad);
 	printf("C Stick: %d\n", settings.cStick);
-	printf("Touch: %d\n", settings.cStick);
+	printf("Touch: %d\n", settings.touch);
 	printf("Mouse Speed: %d\n", settings.mouseSpeed);
 	printf("Mouse Tap: %d\n", settings.mouseTap);
 	printf("Mouse X/Y/W/H: %d/%d/%d/%d  (W/H multi=%f/%f)\n", settings.mouseX,
