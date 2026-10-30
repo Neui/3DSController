@@ -14,7 +14,7 @@
 #include "keyboard.h"
 
 int WINAPI WinMain(HINSTANCE hInst, HINSTANCE hPrevInst, LPSTR lpCmd, int nShow) {
-	printf("3DS Controller Server %.1f (mouse click mod)\n", VERSION);
+	printf("3DS Controller Server %.1f (mouse click mod v1)\n", VERSION);
 	
 	DWORD screenWidth = GetSystemMetrics(SM_CXSCREEN);
 	DWORD screenHeight = GetSystemMetrics(SM_CYSCREEN);
